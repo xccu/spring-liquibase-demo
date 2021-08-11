@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: @profiles.activation@
+
+server:
+  port: 8080

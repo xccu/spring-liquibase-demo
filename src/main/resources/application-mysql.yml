@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+# DataSource Config
+spring:
+  datasource:
+    #mysql数据源
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/liq?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
