@@ -14,5 +14,5 @@ import java.util.List;
 public interface UserDao extends UserMapper {
 
     @Select("SELECT * FROM liq_user WHERE user_id = #{id}")
-    List<User> getUserById(@Param("id") String id);
+    User getUserById(@Param("id") String id);
 }
