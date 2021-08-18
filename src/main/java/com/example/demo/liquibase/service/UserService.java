@@ -24,7 +24,7 @@ public class UserService {
     public User getByName(String name){
         QueryWrapper wrapper = new QueryWrapper();
         wrapper.eq("name",name);
-        return userDao.getUserById(name);
+        return userDao.selectOne(wrapper);
     }
 
     public List<User> getAll(){
