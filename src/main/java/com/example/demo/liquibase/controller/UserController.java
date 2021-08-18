@@ -2,6 +2,7 @@ package com.example.demo.liquibase.controller;
 
 import com.example.demo.liquibase.entity.User;
 import com.example.demo.liquibase.service.UserService;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,12 @@ public class UserController {
     public List<User> getAll() {
         List<User> users = userService.getAll();
         return users;
+    }
+
+    @GetMapping("/{pageNum}/{pageSize}")
+    public PageInfo getPageAll(@PathVariable int pageNum,@PathVariable int pageSize) {
+        PageInfo pageinfo = userService.getPageAll(pageNum, pageSize);
+        return pageinfo;
     }
 
     @GetMapping("/id/{id}")

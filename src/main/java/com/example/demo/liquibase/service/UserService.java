@@ -3,6 +3,8 @@ package com.example.demo.liquibase.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.liquibase.dao.UserDao;
 import com.example.demo.liquibase.entity.User;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +29,13 @@ public class UserService {
 
     public List<User> getAll(){
         return userDao.selectList(null);
+    }
+
+    public PageInfo getPageAll(int pageNum,int pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<User> list =  userDao.selectList(null);
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
     }
 
     @Transactional(rollbackFor = Exception.class)
